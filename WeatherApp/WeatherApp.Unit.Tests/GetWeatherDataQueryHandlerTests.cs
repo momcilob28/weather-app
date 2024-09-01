@@ -1,14 +1,19 @@
 ﻿using FluentAssertions;
 using WeatherApp.Application;
+using WeatherApp.Domain.Services;
+using WeatherApp.Infrastructure.Services;
 
 namespace WeatherApp.Unit.Tests;
 public class GetWeatherDataQueryHandlerTests
 {
     private readonly GetWeatherDataQueryHandler _handler;
+    private readonly IWeatherService _weatherService;
 
     public GetWeatherDataQueryHandlerTests()
     {
-        _handler = new GetWeatherDataQueryHandler();
+        _weatherService = new WeatherService();
+
+        _handler = new GetWeatherDataQueryHandler(_weatherService);
     }
 
     [Fact]
