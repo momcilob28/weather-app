@@ -1,7 +1,8 @@
 name: Build and test Azure Functions
 
 on:
-  workflow_call:
+  push:
+    branches: [main]
 
 jobs:
 
