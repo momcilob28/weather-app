@@ -22,7 +22,7 @@ public class GetWeatherData(IMediator _mediator)
             var response = await _mediator.Send(request);
 
             return new OkObjectResult(response);
-        } 
+        }
         catch (Exception ex)
         {
             return new BadRequestObjectResult(ex.Message);
