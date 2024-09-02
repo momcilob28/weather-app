@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -42,24 +42,18 @@ jobs:
 
     - name: List files in output directory
       run: ls -R "WeatherApp/WeatherApp.AzureFunctions/output"
-        
-  deploy:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    
+
     - name: Deploy info
       run: echo ::notice::"Deploy started"
 
     - name: List files in output directory
-      run: ls -R "output"
+      run: ls -R "WeatherApp/WeatherApp.AzureFunctions/output"
       
     - name: Download deploy package
       uses: actions/download-artifact@v3
       with:
         name: deploy-package
-        path: "output"
+        path: "WeatherApp/WeatherApp.AzureFunctions/output"
 
     - name: Deploy to Azure
       uses: Azure/functions-action@v1.4.7
