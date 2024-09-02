@@ -1,0 +1,40 @@
+name: Build and test Azure Functions
+
+on:
+  workflow_call:
+
+jobs:
+
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build info
+      run: |
+        echo ::notice::"Build started"
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      working-directory: "./$WeatherApp"
+      run: dotnet restore
+  
+    - name: Format source
+      continue-on-error: true
+      working-directory: "./$WeatherApp"
+      run: dotnet format --verify-no-changes
+
+    - name: Release source
+      working-directory: "./$WeatherApp/WeatherApp.AzureFunctions"
+      run: dotnet publish --no-restore --output output
+
+    - name: Archive deploy package
+      uses: actions/upload-artifact@v4
+      with:
+        name: deploy-package
+        path: "./$WeatherApp/WeatherApp.AzureFunctions/output"
+        retention-days: 30
