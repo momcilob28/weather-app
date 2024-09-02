@@ -1,14 +1,27 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WeatherApp.Domain.Services;
+using WeatherApp.Infrastructure.Services;
 
-var host = new HostBuilder()
-    .ConfigureFunctionsWebApplication()
-    .ConfigureServices(services =>
+
+public class Program
+{
+    public static async Task Main(string[] args)
     {
-        services.AddApplicationInsightsTelemetryWorkerService();
-        services.ConfigureFunctionsApplicationInsights();
-    })
-    .Build();
+        var host = new HostBuilder()
+            .ConfigureFunctionsWebApplication()
+            .ConfigureServices(services =>
+            {
+                services.AddApplicationInsightsTelemetryWorkerService();
+                services.ConfigureFunctionsApplicationInsights();
 
-host.Run();
+                services.AddMediatR(config => config.RegisterServicesFromAssembly(WeatherApp.Application.Reference.Assembly));
+
+                services.AddScoped<IWeatherService, WeatherService>();
+            })
+            .Build();
+
+        await host.RunAsync();
+    }
+}
