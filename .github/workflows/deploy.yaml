@@ -39,6 +39,9 @@ jobs:
         name: deploy-package
         path: "WeatherApp/WeatherApp.AzureFunctions/output"
         retention-days: 30
+
+    - name: List files in output directory
+      run: ls -R "WeatherApp/WeatherApp.AzureFunctions/output"
         
   deploy:
     needs: [build]
@@ -49,6 +52,9 @@ jobs:
     - name: Deploy info
       run: echo ::notice::"Deploy started"
 
+    - name: List files in output directory
+      run: ls -R "WeatherApp/WeatherApp.AzureFunctions/output"
+      
     - name: Download deploy package
       uses: actions/download-artifact@v3
       with:
