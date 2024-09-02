@@ -16,5 +16,5 @@ To use the weather app:
   4. Trigger request "get-weather-from-local-app
 
 ## 📔 About the app
-  App is created using .NET 8.0, everything is hosted on azure.
-  CI/CD pipeline deploys the application to the azure function on push, using github actions.
+  - App is created using .NET 8.0, everything is hosted on azure.
+  - CI/CD pipeline deploys the application to the azure function on push, using github actions.
