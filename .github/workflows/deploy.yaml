@@ -26,7 +26,7 @@ jobs:
   
     - name: Format source
       continue-on-error: true
-      working-directory: "./$WeatherApp"
+      working-directory: "./$WeatherApp/WeatherApp.AzureFunctions"
       run: dotnet format --verify-no-changes
 
     - name: Release source
