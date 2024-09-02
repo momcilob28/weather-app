@@ -47,5 +47,5 @@ jobs:
       uses: Azure/functions-action@v1.4.7
       with:
         app-name: "af-weatherapp-dev"
-        package: "output"
+        package: "WeatherApp/WeatherApp.AzureFunctions/output"
         publish-profile: ${{ secrets.PUBLISH_CRED }}
