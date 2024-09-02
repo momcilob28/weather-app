@@ -4,6 +4,14 @@ using WeatherApp.Domain.Services;
 namespace WeatherApp.Infrastructure.Services;
 public class WeatherService : IWeatherService
 {
+    private readonly string _accessKey;
+
+    public WeatherService()
+    {
+        _accessKey = Environment.GetEnvironmentVariable("WEATHERSTACK_ACCESS_KEY") 
+            ?? throw new InvalidOperationException("Missing api key");
+    }
+
     public async Task<int> GetWeatherData(string city)
     {
         using var httpclient = new HttpClient();
@@ -11,7 +19,7 @@ public class WeatherService : IWeatherService
         var request = new HttpRequestMessage
         {
             Method = HttpMethod.Get,
-            RequestUri = new Uri($"http://api.weatherstack.com/current?access_key=???&query={city}")
+            RequestUri = new Uri($"http://api.weatherstack.com/current?access_key={_accessKey}&query={city}")
         };
 
         var response = await httpclient.SendAsync(request);
