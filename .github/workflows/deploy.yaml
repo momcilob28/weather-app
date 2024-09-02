@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -39,3 +39,24 @@ jobs:
         name: deploy-package
         path: "./$WeatherApp/WeatherApp.AzureFunctions/output"
         retention-days: 30
+        
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Deploy info
+      run: echo ::notice::"Deploy started"
+
+    - name: Download deploy package
+      uses: actions/download-artifact@v3
+      with:
+        name: deploy-package
+        path: "output"
+
+    - name: Deploy to Azure
+      uses: Azure/functions-action@v1.4.7
+      with:
+        app-name: "af-weatherapp-dev"
+        package: "output"
+        publish-profile: ${{ secrets.PUBLISH_CRED }}
