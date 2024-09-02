@@ -43,9 +43,25 @@ jobs:
     - name: Deploy info
       run: echo ::notice::"Deploy started"
 
-    - name: Deploy to Azure
-      uses: Azure/functions-action@v1.4.7
+#    - name: Deploy to Azure
+#      uses: Azure/functions-action@v1.4.7
+#      with:
+#        app-name: "af-weatherapp-dev"
+#        package: "WeatherApp/WeatherApp.AzureFunctions/output"
+#        publish-profile: ${{ secrets.PUBLISH_CRED }}
+
+    - name: Login to Azure
+      uses: azure/login@v2
       with:
-        app-name: "af-weatherapp-dev"
-        package: "WeatherApp/WeatherApp.AzureFunctions/output"
-        publish-profile: ${{ secrets.PUBLISH_CRED }}
+        client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E296B19E68E14D76BEF0E8B6F40254BE }}
+        tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_23B7AE4241B1419AA88B143C6DBEE07F }}
+        subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6C49242A2FF64EA0AFF643EC78BEF2D8 }}
+
+    - name: 'Run Azure Functions Action'
+      uses: Azure/functions-action@v1
+      id: fa
+      with:
+        app-name: 'af-weatherapp-dev'
+        slot-name: 'Production'
+        package: 'WeatherApp/WeatherApp.AzureFunctions/output'
+          
