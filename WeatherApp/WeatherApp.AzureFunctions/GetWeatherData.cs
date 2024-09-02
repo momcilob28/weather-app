@@ -9,7 +9,7 @@ public class GetWeatherData(IMediator _mediator)
 {
     [Function("get-weather-data")]
     public async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get")] HttpRequest req, string city)
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequest req, string city)
     {
         try
         {
