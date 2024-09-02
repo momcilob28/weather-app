@@ -26,18 +26,18 @@ jobs:
   
     - name: Format source
       continue-on-error: true
-      working-directory: "./$WeatherApp/WeatherApp.AzureFunctions"
+      working-directory: "WeatherApp/WeatherApp.AzureFunctions"
       run: dotnet format --verify-no-changes
 
     - name: Release source
-      working-directory: "./$WeatherApp/WeatherApp.AzureFunctions"
+      working-directory: "WeatherApp/WeatherApp.AzureFunctions"
       run: dotnet publish --no-restore --output output
 
     - name: Archive deploy package
       uses: actions/upload-artifact@v4
       with:
         name: deploy-package
-        path: "./$WeatherApp/WeatherApp.AzureFunctions/output"
+        path: "WeatherApp/WeatherApp.AzureFunctions/output"
         retention-days: 30
         
   deploy:
