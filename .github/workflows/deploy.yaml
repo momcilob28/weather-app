@@ -53,7 +53,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: deploy-package
-        path: "output"
+        path: "WeatherApp/WeatherApp.AzureFunctions/output"
 
     - name: Deploy to Azure
       uses: Azure/functions-action@v1.4.7
