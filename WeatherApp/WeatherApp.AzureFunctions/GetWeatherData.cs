@@ -2,7 +2,6 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
-using Microsoft.Extensions.Logging;
 using WeatherApp.Application;
 
 namespace WeatherApp.AzureFunctions;
