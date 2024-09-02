@@ -21,7 +21,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      working-directory: "./$WeatherApp/WeatherApp"
+      working-directory: "./$WeatherApp/WeatherApp.AzureFunctions"
       run: dotnet restore
   
     - name: Format source
