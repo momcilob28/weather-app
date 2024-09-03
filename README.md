@@ -28,7 +28,8 @@ To use the weather app:
   "Values": {
     "AzureWebJobsStorage": "",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
-    "WEATHERSTACK_ACCESS_KEY": "get the API key from https://weatherstack.com/"
+    "WEATHERSTACK_ACCESS_KEY": "get the API key from https://weatherstack.com/",
+    "WEATHERSTACK_URL": "http://api.weatherstack.com/"
   }
 }
 ```
