@@ -30,7 +30,8 @@ public class WeatherService : IWeatherService
 
         var responseString = await response.Content.ReadAsStringAsync();
 
-        var weatherData = JsonConvert.DeserializeObject<WeatherDataDto>(responseString)!.Current!;
+        var weatherData = JsonConvert.DeserializeObject<WeatherDataDto>(responseString)?.Current
+            ?? throw new InvalidOperationException($"Weather data could not be found for city: {city}.");
 
         return new CurrentWeather
         {
@@ -68,7 +69,8 @@ public class WeatherService : IWeatherService
 
         var responseString = await response.Content.ReadAsStringAsync();
 
-        var weatherData = JsonConvert.DeserializeObject<WeatherDataDto>(responseString)!.Historical!;
+        var weatherData = JsonConvert.DeserializeObject<WeatherDataDto>(responseString)!.Historical
+            ?? throw new InvalidOperationException($"Weather data could not be found for city: {city} and date: {date}.");
 
         var dateWeather = weatherData[date];
 

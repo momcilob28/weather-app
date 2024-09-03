@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
+using System.Text.RegularExpressions;
 using WeatherApp.Application;
 
 namespace WeatherApp.AzureFunctions.API;
@@ -13,6 +16,8 @@ public class GetHistoricalWeatherData(IMediator _mediator)
     {
         try
         {
+            ValidateRequest(city, date);
+
             var request = new GetHistoricalWeatherDataRequest
             {
                 City = city,
@@ -26,6 +31,35 @@ public class GetHistoricalWeatherData(IMediator _mediator)
         catch (Exception ex)
         {
             return new BadRequestObjectResult(ex.Message);
+        }
+    }
+
+
+    private static void ValidateRequest(string city, string date)
+    {
+        if (string.IsNullOrWhiteSpace(city))
+        {
+            throw new ValidationException("City cannot be null or empty.");
+        }
+
+        if (string.IsNullOrWhiteSpace(date))
+        {
+            throw new ValidationException("Date cannot be null or empty.");
+        }
+
+        if (!Regex.IsMatch(date, @"^\d{4}-\d{2}-\d{2}$"))
+        {
+            throw new ValidationException("Date must be in the format yyyy-MM-dd.");
+        }
+
+        if (!DateTime.TryParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedDate))
+        {
+            throw new ValidationException("Date is not a valid date.");
+        }
+
+        if (parsedDate > DateTime.UtcNow.Date)
+        {
+            throw new ValidationException("Date cannot be in the future.");
         }
     }
 }
