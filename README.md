@@ -2,7 +2,7 @@
 
 Repo of the weather-app
 
-## 🧪 Testing
+## 🧪 Usage
 
 To use the weather app:
 
