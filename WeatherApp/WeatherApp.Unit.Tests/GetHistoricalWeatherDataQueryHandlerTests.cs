@@ -6,12 +6,20 @@ using WeatherApp.Infrastructure.Services;
 namespace WeatherApp.Unit.Tests;
 public class GetHistoricalWeatherDataQueryHandlerTests
 {
+    private readonly HttpClient _httpClient;
     private readonly GetHistoricalWeatherDataQueryHandler _handler;
     private readonly IWeatherService _weatherService;
 
     public GetHistoricalWeatherDataQueryHandlerTests()
     {
-        _weatherService = new WeatherService();
+        Environment.SetEnvironmentVariable("WEATHERSTACK_ACCESS_KEY", "YOUR_API_KEY");
+
+        _httpClient = new HttpClient
+        {
+            BaseAddress = new Uri("http://api.weatherstack.com/")
+        };
+
+        _weatherService = new WeatherService(_httpClient);
 
         _handler = new GetHistoricalWeatherDataQueryHandler(_weatherService);
     }

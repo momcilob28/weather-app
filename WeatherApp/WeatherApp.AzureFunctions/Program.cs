@@ -9,6 +9,7 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
+        var weatherstackUrl = Environment.GetEnvironmentVariable("WEATHERSTACK_URL")!;
         var host = new HostBuilder()
             .ConfigureFunctionsWebApplication()
             .ConfigureServices(services =>
@@ -22,7 +23,7 @@ public class Program
 
                 services.AddHttpClient<IWeatherService, WeatherService>(client =>
                 {
-                    client.BaseAddress = new Uri("http://api.weatherstack.com/");
+                    client.BaseAddress = new Uri(weatherstackUrl);
                 });
             })
             .Build();

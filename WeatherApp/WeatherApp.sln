@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp.Domain", "Weathe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp.Infrastructure", "WeatherApp.Infrastructure\WeatherApp.Infrastructure.csproj", "{9C785E67-53BB-4AD6-BDCB-E454F5AF4AE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.AzureFunctions", "WeatherApp.AzureFunctions\WeatherApp.AzureFunctions.csproj", "{CCE371E5-86F8-4668-8AE5-C9FF37A3DD5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp.AzureFunctions", "WeatherApp.AzureFunctions\WeatherApp.AzureFunctions.csproj", "{CCE371E5-86F8-4668-8AE5-C9FF37A3DD5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +52,7 @@ Global
 		{866A1A9E-44DD-4F1E-B26D-F21C70F65F3A} = {526E15C7-192C-4D75-89E0-15E8A45EF7EC}
 		{C7F4BD9D-8BC0-4DC4-BC35-BB4A7F0EF497} = {F3D31BD2-BE8B-4B4C-B70D-A905E1BB0E6E}
 		{9C785E67-53BB-4AD6-BDCB-E454F5AF4AE8} = {F3D31BD2-BE8B-4B4C-B70D-A905E1BB0E6E}
+		{CCE371E5-86F8-4668-8AE5-C9FF37A3DD5E} = {F3D31BD2-BE8B-4B4C-B70D-A905E1BB0E6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1F1B139-4D8E-47D1-BD94-EA75A7D12E25}
