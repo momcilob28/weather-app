@@ -19,3 +19,13 @@ To use the weather app:
 ## 📔 About the app
   - App is created using .NET 8.0, everything is hosted on azure.
   - CI/CD pipeline deploys the application to the azure function on push, using github actions.
+
+## 📔 Template for local.settings.json
+  `{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "WEATHERSTACK_ACCESS_KEY": "get the API key from https://weatherstack.com/"
+  }
+}`
