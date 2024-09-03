@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Text.RegularExpressions;
-using WeatherApp.Application;
+using WeatherApp.Application.API;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WeatherApp.AzureFunctions.API;

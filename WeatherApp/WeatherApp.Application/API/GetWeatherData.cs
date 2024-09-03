@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using WeatherApp.Domain.Services;
 
-namespace WeatherApp.Application;
+namespace WeatherApp.Application.API;
 public sealed record GetWeatherDataQueryRequest : IRequest<GetWeatherDataQueryResponse>
 {
     public string? City { get; set; }

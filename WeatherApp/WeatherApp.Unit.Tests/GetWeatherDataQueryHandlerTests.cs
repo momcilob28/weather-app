@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using WeatherApp.Application;
+using WeatherApp.Application.API;
 using WeatherApp.Domain.Services;
 using WeatherApp.Infrastructure.Services;
 
