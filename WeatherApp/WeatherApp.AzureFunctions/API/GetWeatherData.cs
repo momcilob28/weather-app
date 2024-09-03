@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using WeatherApp.Application;
 
-namespace WeatherApp.AzureFunctions;
+namespace WeatherApp.AzureFunctions.API;
 public class GetWeatherData(IMediator _mediator)
 {
     [Function("get-weather-data")]

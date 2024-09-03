@@ -1,13 +1,13 @@
-﻿using MediatR;
+using MediatR;
 using WeatherApp.Domain.Services;
 
-namespace WeatherApp.Application;
-public sealed record GetWeatherDataQueryRequest : IRequest<GetWeatherDataQueryResponse>
+public sealed record GetHistoricalWeatherDataRequest : IRequest<GetHistoricalWeatherDataQueryResponse>
 {
     public string? City { get; set; }
+    public string? Date { get; set; }
 }
 
-public sealed class GetWeatherDataQueryResponse
+public sealed class GetHistoricalWeatherDataQueryResponse
 {
     public string? ObservationTime { get; set; }
     public int Temperature { get; set; }
@@ -26,15 +26,16 @@ public sealed class GetWeatherDataQueryResponse
     public int Visibility { get; set; }
 }
 
-public class GetWeatherDataQueryHandler(IWeatherService _weatherService) : IRequestHandler<GetWeatherDataQueryRequest, GetWeatherDataQueryResponse>
+public class GetHistoricalWeatherDataQueryHandler(IWeatherService _weatherService) : IRequestHandler<GetHistoricalWeatherDataRequest, GetHistoricalWeatherDataQueryResponse>
 {
-    public async Task<GetWeatherDataQueryResponse> Handle(GetWeatherDataQueryRequest request, CancellationToken cancellationToken)
+    public async Task<GetHistoricalWeatherDataQueryResponse> Handle(GetHistoricalWeatherDataRequest request, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request.City, nameof(request.City));
+        ArgumentNullException.ThrowIfNull(request.Date, nameof(request.Date));
 
-        var weatherData = await _weatherService.GetWeatherData(city: request.City);
+        var weatherData = await _weatherService.GetHistoricalWeatherData(city: request.City, date: request.Date);
 
-        return new GetWeatherDataQueryResponse
+        return new GetHistoricalWeatherDataQueryResponse
         {
             ObservationTime = weatherData.ObservationTime,
             Temperature = weatherData.Temperature,

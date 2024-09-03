@@ -1,5 +1,8 @@
-﻿namespace WeatherApp.Domain.Services;
+﻿using WeatherApp.Domain.Models;
+
+namespace WeatherApp.Domain.Services;
 public interface IWeatherService
 {
-    Task<int> GetWeatherData(string city);
+    Task<HistoricalWeather> GetHistoricalWeatherData(string city, string date);
+    Task<CurrentWeather> GetWeatherData(string city);
 }
