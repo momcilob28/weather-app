@@ -19,6 +19,11 @@ public class Program
                 services.AddMediatR(config => config.RegisterServicesFromAssembly(WeatherApp.Application.Reference.Assembly));
 
                 services.AddScoped<IWeatherService, WeatherService>();
+
+                services.AddHttpClient<IWeatherService, WeatherService>(client =>
+                {
+                    client.BaseAddress = new Uri("http://api.weatherstack.com/");
+                });
             })
             .Build();
 
