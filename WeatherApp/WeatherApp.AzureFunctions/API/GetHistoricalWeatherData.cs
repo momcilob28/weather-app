@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
+using WeatherApp.Application;
 
 namespace WeatherApp.AzureFunctions.API;
 public class GetHistoricalWeatherData(IMediator _mediator)

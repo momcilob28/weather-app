@@ -4,6 +4,7 @@ namespace WeatherApp.Infrastructure.Dtos;
 public sealed record WeatherDataDto
 {
     public CurrentWeatherDto? Current { get; set; }
+    public Dictionary<string, HistoricalWeatherDto>? Historical { get; set; }
 }
 
 public sealed record CurrentWeatherDto
@@ -52,4 +53,22 @@ public sealed record CurrentWeatherDto
 
     [JsonProperty("visibility")]
     public int Visibility { get; set; }
+}
+
+public sealed record HistoricalWeatherDto
+{
+    [JsonProperty("date")]
+    public string? Date { get; set; }
+
+    [JsonProperty("mintemp")]
+    public int MinimumTemperature { get; set; }
+
+    [JsonProperty("maxtemp")]
+    public int MaximumTemperature { get; set; }
+
+    [JsonProperty("avgtemp")]
+    public int AverageTemperature { get; set; }
+
+    [JsonProperty("sunhour")]
+    public int HoursOfSunshine { get; set; }
 }

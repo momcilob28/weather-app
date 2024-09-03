@@ -1,6 +1,7 @@
 using MediatR;
 using WeatherApp.Domain.Services;
 
+namespace WeatherApp.Application;
 public sealed record GetHistoricalWeatherDataRequest : IRequest<GetHistoricalWeatherDataQueryResponse>
 {
     public string? City { get; set; }
@@ -9,21 +10,11 @@ public sealed record GetHistoricalWeatherDataRequest : IRequest<GetHistoricalWea
 
 public sealed class GetHistoricalWeatherDataQueryResponse
 {
-    public string? ObservationTime { get; set; }
-    public int Temperature { get; set; }
-    public int WeatherCode { get; set; }
-    public string[]? WeatherIcons { get; set; }
-    public string[]? WeatherDescriptions { get; set; }
-    public int WindSpeed { get; set; }
-    public int WindDegree { get; set; }
-    public string? WindDirection { get; set; }
-    public int Pressure { get; set; }
-    public int Precipitation { get; set; }
-    public int Humidity { get; set; }
-    public int Cloudcover { get; set; }
-    public int Feelslike { get; set; }
-    public int UVIndex { get; set; }
-    public int Visibility { get; set; }
+    public string? Date { get; set; }
+    public int MinimumTemperature { get; set; }
+    public int MaximumTemperature { get; set; }
+    public int AverageTemperature { get; set; }
+    public int HoursOfSunshine { get; set; }
 }
 
 public class GetHistoricalWeatherDataQueryHandler(IWeatherService _weatherService) : IRequestHandler<GetHistoricalWeatherDataRequest, GetHistoricalWeatherDataQueryResponse>
@@ -37,21 +28,11 @@ public class GetHistoricalWeatherDataQueryHandler(IWeatherService _weatherServic
 
         return new GetHistoricalWeatherDataQueryResponse
         {
-            ObservationTime = weatherData.ObservationTime,
-            Temperature = weatherData.Temperature,
-            WeatherCode = weatherData.WeatherCode,
-            WeatherIcons = weatherData.WeatherIcons,
-            WeatherDescriptions = weatherData.WeatherDescriptions,
-            WindSpeed = weatherData.WindSpeed,
-            WindDegree = weatherData.WindDegree,
-            WindDirection = weatherData.WindDirection,
-            Pressure = weatherData.Pressure,
-            Precipitation = weatherData.Precipitation,
-            Humidity = weatherData.Humidity,
-            Cloudcover = weatherData.Cloudcover,
-            Feelslike = weatherData.Feelslike,
-            UVIndex = weatherData.UVIndex,
-            Visibility = weatherData.Visibility
+            Date = weatherData.Date,
+            MinimumTemperature = weatherData.MinimumTemperature,
+            MaximumTemperature = weatherData.MaximumTemperature,
+            AverageTemperature = weatherData.AverageTemperature,
+            HoursOfSunshine = weatherData.HoursOfSunshine
         };
     }
 }

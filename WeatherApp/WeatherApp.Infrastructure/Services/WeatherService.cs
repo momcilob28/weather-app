@@ -68,25 +68,17 @@ public class WeatherService : IWeatherService
 
         var responseString = await response.Content.ReadAsStringAsync();
 
-        var weatherData = JsonConvert.DeserializeObject<WeatherDataDto>(responseString)!.Current!;
+        var weatherData = JsonConvert.DeserializeObject<WeatherDataDto>(responseString)!.Historical!;
+
+        var dateWeather = weatherData[date];
 
         return new HistoricalWeather
         {
-            ObservationTime = weatherData.ObservationTime,
-            Temperature = weatherData.Temperature,
-            WeatherCode = weatherData.WeatherCode,
-            WeatherIcons = weatherData.WeatherIcons,
-            WeatherDescriptions = weatherData.WeatherDescriptions,
-            WindSpeed = weatherData.WindSpeed,
-            WindDegree = weatherData.WindDegree,
-            WindDirection = weatherData.WindDirection,
-            Pressure = weatherData.Pressure,
-            Precipitation = weatherData.Precipitation,
-            Humidity = weatherData.Humidity,
-            Cloudcover = weatherData.Cloudcover,
-            Feelslike = weatherData.Feelslike,
-            UVIndex = weatherData.UVIndex,
-            Visibility = weatherData.Visibility
+            Date = dateWeather.Date,
+            MinimumTemperature = dateWeather.MinimumTemperature,
+            MaximumTemperature = dateWeather.MaximumTemperature,
+            AverageTemperature = dateWeather.AverageTemperature,
+            HoursOfSunshine = dateWeather.HoursOfSunshine
         };
     }
 
