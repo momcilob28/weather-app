@@ -20,7 +20,7 @@ To use the weather app:
   - App is created using .NET 8.0, everything is hosted on azure.
   - CI/CD pipeline deploys the application to the azure function on push, using github actions.
 
-## 📔 Template for local.settings.json
+## 📝 Template for local.settings.json
 
 ```json
 {
