@@ -59,7 +59,7 @@ public class WeatherService : IWeatherService
         var request = new HttpRequestMessage
         {
             Method = HttpMethod.Get,
-            RequestUri = new Uri($"http://api.weatherstack.com/historical?access_key={_accessKey}&query={city}&historical_date{date}")
+            RequestUri = new Uri($"http://api.weatherstack.com/historical?access_key={_accessKey}&query={city}&historical_date={date}")
         };
 
         var response = await httpclient.SendAsync(request);
