@@ -7,7 +7,8 @@ Repo of the weather-app
 To use the weather app:
 
 ### 🌐 From browser:
-  1. Make a request to: https://apim-weatherapp-dev.azure-api.net/get-weather-data?city=pancevo
+  1. To get current weather data make a request to: https://apim-weatherapp-dev.azure-api.net/get-weather-data?city=pancevo
+  2. To get historical weather data make a request to: https://apim-weatherapp-dev.azure-api.net/get-historical-weather-data?city=pancevo&date=2023-01-01
 
 ### ✉️ From postman:
   1. Import the collection from the repository
