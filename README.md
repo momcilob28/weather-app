@@ -2,7 +2,7 @@
 
 Repo of the weather-app
 
-## 🧪 Testing
+## 🧪 Usage
 
 To use the weather app:
 
@@ -11,7 +11,7 @@ To use the weather app:
   2. To get historical weather data make a request to: https://apim-weatherapp-dev.azure-api.net/get-historical-weather-data?city=pancevo&date=2023-01-01
 
 ### ✉️ From postman:
-  1. Import the collection from the repository
+  1. Import the "WeatherApp.postman_collection.json" collection from the repository
   2. Clone the repository
   3. Add weatherstack api key in local.settings.json
   4. Trigger request "get-weather-from-local-app

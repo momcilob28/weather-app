@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "d5132e6f-147a-4adb-ac94-4750e787d276",
+		"name": "WeatherApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22269981"
+	},
+	"item": [
+		{
+			"name": "Get weather from local app",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7016/api/get-weather-data?city=Pancevo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7016",
+					"path": [
+						"api",
+						"get-weather-data"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Pancevo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get historical weather from local app",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7016/api/get-historical-weather-data?city=Pancevo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7016",
+					"path": [
+						"api",
+						"get-historical-weather-data"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Pancevo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get weather from deployed app",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://af-weatherapp-dev.azurewebsites.net/api/get-weather-data?city=Pancevo",
+					"protocol": "https",
+					"host": [
+						"af-weatherapp-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"get-weather-data"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Pancevo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get historical weather from deployed app",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://af-weatherapp-dev.azurewebsites.net/api/get-weather-data?city=Pancevo",
+					"protocol": "https",
+					"host": [
+						"af-weatherapp-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"get-weather-data"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Pancevo"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
